@@ -14,12 +14,15 @@ Gazebo Harmonic 환경에서 TurtleBot3 Burger 모델을 활용해 자율 주행
 이후 ros_gz_bridge는 해당 명령을 Gazebo 메시지 형식(gz.msgs.Twist)로 변환해 시뮬레이터 내부의 TurtleBot3 모터 컨트롤러로 전달한다. 결과적으로 사용자의 제어 명령이 Gazebo 내 로봇의 실제 움직임으로 반영되며 이를 통해 주행 및 센서 데이터 수집이 이루어진다.
 
 4)	SLAM 기반 지도 생성 
-ROS2 환경에서는 cartographer_node가 실행되어 실시간 지도 작업을 수행했다. Cartographer는 LiDAR스캔 데이터(/scan), 로봇 위치 정보(/odom), 좌표 변환 정보(/tf)를 통합적으로 활용해 로봇의 위치를 추정하고 주변 환경을 2차원 점유 격자 지도 형태로 생성한다. 
-
-초기에는 teleop_keyboard를 이용한 수동 조작 방식으로 지도 생성을 수행했으나 넓은 공간을 탐색하는 과정에서 조작의 어려움과 비효율성이 발생하였다. 이를 개선하기 위해 Naviagation2(Nav2)의 Goal Pose기능을 활용하였다. 사용자는 Rviz2상에서 탐색이 필요한 위치를 목표 지점으로 지정했으며 로봇은 해당 위치까지 자율적으로 이동하며 주변 환경을 스캔하였다. 이러한 방식으로 사용자의 지속적인 조작 없이도 효율적으로 미로 내부를 탐색할 수 있었으며, 결과적으로 보다 빠르고 안정적으로 전체 지도를 완성할 수 있었다.
+ROS2 환경에서는 cartographer_node가 실행되어 실시간 지도 작업을 수행했다. Cartographer는 LiDAR스캔 데이터(/scan), 로봇 위치 정보(/odom), 좌표 변환 정보(/tf)를 통합적으로 활용해 로봇의 위치를 추정하고 주변 환경을 2차원 점유 격자 지도 형태로 생성한다. 초기에는 teleop_keyboard를 이용한 수동 조작 방식으로 지도 생성을 수행했으나 넓은 공간을 탐색하는 과정에서 조작의 어려움과 비효율성이 발생하였다. 이를 개선하기 위해 Naviagation2(Nav2)의 Goal Pose기능을 활용하였다. 사용자는 Rviz2상에서 탐색이 필요한 위치를 목표 지점으로 지정했으며 로봇은 해당 위치까지 자율적으로 이동하며 주변 환경을 스캔하였다. 이러한 방식으로 사용자의 지속적인 조작 없이도 효율적으로 미로 내부를 탐색할 수 있었으며, 결과적으로 보다 빠르고 안정적으로 전체 지도를 완성할 수 있었다.
 
 5)	시각화 및 검증
 Rviz2는 /scan, /odom, /tf, /map 등의 주요 토픽을 구독해 센서 데이터와 생성된 지도를 실시간으로 시각화한다. 이를 통해 사용자는 로봇의 현재 위치, LiDAR스캔 결과, 지도 생성 진행 상황을 한 화면에서 확인할 수 있으며 SLAM알고리즘이 정상적으로 동작하는지 검증할 수 있다. 
+
+
+
+
+
 
 
 ## 2.	실물 TurtleBot3 연동 및 실환경 검증
@@ -36,12 +39,18 @@ Rviz2는 /scan, /odom, /tf, /map 등의 주요 토픽을 구독해 센서 데이
 
 
 <완성 지도>
+
+
 <img width="337" height="304" alt="image" src="https://github.com/user-attachments/assets/080b3da7-e790-4b92-afa6-3db4558c9c9a" />
 
 <실물 터틀봇 미로 환경>
+
+
 <img width="251" height="251" alt="image" src="https://github.com/user-attachments/assets/9c074716-0a20-422b-bb22-5aceefa7c716" />
 
 <완성된 SLAM 지도>
+
+
 <img width="317" height="276" alt="image" src="https://github.com/user-attachments/assets/f7ce513e-3fb3-4360-971f-26dd879337b7" />
 
 
