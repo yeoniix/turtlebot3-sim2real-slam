@@ -1,6 +1,11 @@
 # 🐢turtlebot3-sim2real-slam
 ROS2 기반 TurtleBot3의 시뮬레이션 및 실환경 지도 생성·자율주행 검증 프로젝트
 
+
+💡 본 프로젝트는 TurtleBot3 Burger 모델을 활용하여 직접 설계한 미로 환경에서 SLAM 기반 지도 생성 및 자율 주행을 시뮬레이션과 실물 로봇 양측에서 구현하고 검증하는 것을 목표로 하였다. 먼저 GazeboSim 환경에서 LiDAR 기반 SLAM 을 통해 지도를 생성하고 Navigation2 를 활용하여 자율 주행을 구현하였으며, 이후 라우터 기반 네트워크 환경에서의 SSH 원격 연결을 통해 실제 TurtleBot3 에 동일한 시스템을 적용하여 실 환경에서의 동작을 최종 검증하였다.
+
+
+
 ## 1.	시뮬레이션 환경 구축 및 테스트
 1)	시뮬레이션 환경 구성 (Gazebo -> ROS2)
 Gazebo Harmonic 환경에서 TurtleBot3 Burger 모델을 활용해 자율 주행 실험을 수행하였다. 실제 실험 환경과 유사한 조건을 구현하기 위해 사용자가 직접 설계한 미로 형태의 SDF(Simulation Description Format) 맵을 제작하였으며, Gazebo 내부에 배치하였다. 
